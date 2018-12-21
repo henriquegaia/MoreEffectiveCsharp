@@ -8,7 +8,8 @@ namespace MECSharp_27_UseAsyncMethodsForAsyncWork
     {
         static void Main(string[] args)
         {
-            Ex1.Test();
+            //Ex1.Test();
+            Ex2.Test();
         }
     }
 }

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ex1.cs" />
+    <Compile Include="Ex2.cs" />
     <Compile Include="MECSharp_27_UseAsyncMethodsForAsyncWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
