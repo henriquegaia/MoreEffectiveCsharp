@@ -10,7 +10,7 @@ namespace MECSharp_27_UseAsyncMethodsForAsyncWork
     // page 142, par 2
     public class Ex2
     {
-        static string file = @"C:\Users\Henrique\Dropbox\dropbox\plan.txt";
+        static string file = @"D:\jsfxr.js";
 
         public static void Test()
         {
