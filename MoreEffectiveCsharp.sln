@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_26_EnableImmErrRep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_27_UseAsyncMethodsForAsyncWork", "MECSharp_27_UseAsyncMethodsForAsyncWork\MECSharp_27_UseAsyncMethodsForAsyncWork.csproj", "{C8F1C11F-017C-405C-A5B1-57DF13E98A82}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{913C5998-18C5-4C48-ADF1-044EB3D1DC52}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Henrique\Desktop\cover.PNG = C:\Users\Henrique\Desktop\cover.PNG
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
