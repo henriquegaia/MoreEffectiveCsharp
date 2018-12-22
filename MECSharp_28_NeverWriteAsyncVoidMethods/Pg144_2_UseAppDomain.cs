@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace MECSharp_28_NeverWriteAsyncVoidMethods
 {
@@ -13,10 +11,12 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
 
         public static void Test()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+
             // case 1: can catch exception ------------------------------------
             // async Task<int> ------------------------------------------------
 
-            ExceptionCaught();
+            //ExceptionCaught();
 
             // case 2: can't catch or log exception ---------------------------
             // async void -----------------------------------------------------
@@ -26,23 +26,23 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
             // case 3: can't catch exception but can log it -------------------
             // async void -----------------------------------------------------
 
-            //AppDomainThrowsException();
+            AppDomainThrowsException();
         }
 
         private static void ExceptionCaught()
         {
             try
             {
-                Log("enter async");
+                Log.Line("enter async");
                 Task<int> asyncWork = HandleFileAsync();
-                Log("Enter something: ");
+                Log.Line("Enter something: ");
                 string line = Console.ReadLine();
-                Log("You entered (asynchronous logic): " + line);
-                Log("exit async");
+                Log.Line("You entered (asynchronous logic): " + line);
+                Log.Line("exit async");
                 asyncWork.Wait();
                 var resAsync = asyncWork.Result;
-                Log(resAsync.ToString());
-                Other();
+                Log.Line(resAsync.ToString());
+                Log.Info();
             }
             catch (Exception e)
             {
@@ -54,13 +54,13 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
         {
             try
             {
-                Log("enter async");
+                Log.Line("enter async");
                 HandleFileAsyncVoid();
-                Log("Enter something: ");
+                Log.Line("Enter something: ");
                 string line2 = Console.ReadLine();
-                Log("You entered (asynchronous logic): " + line2);
-                Log("exit async");
-                Other();
+                Log.Line("You entered (asynchronous logic): " + line2);
+                Log.Line("exit async");
+                Log.Info();
             }
             catch (Exception e)
             {
@@ -70,19 +70,26 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
 
         private static void AppDomainThrowsException()
         {
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            try
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(e.ExceptionObject.ToString());
-            };
+                AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(e.ExceptionObject.ToString());
+                };
 
-            Log("enter async");
-            HandleFileAsyncVoid();
-            Log("Enter something: ");
-            string line2 = Console.ReadLine();
-            Log("You entered (asynchronous logic): " + line2);
-            Log("exit async");
-            Other();
+                Log.Line("enter async");
+                HandleFileAsyncVoid();
+                Log.Line("Enter something: ");
+                string line2 = Console.ReadLine();
+                Log.Line("You entered (asynchronous logic): " + line2);
+                Log.Line("exit async");
+                Log.Info();
+            }
+            catch (Exception e)
+            {
+                Log.Exception(e);
+            }
         }
 
         static async Task<int> HandleFileAsync()
@@ -123,14 +130,5 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
                 }
             }
         }
-
-        private static void Other()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Log("Continue ...");
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-
-        private static void Log(string s) => Console.WriteLine($"{DateTime.Now}: {s}");
     }
 }

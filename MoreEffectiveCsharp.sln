@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_28_NeverWriteAsync
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_27_UseAsyncMethodsForAsyncWork", "MECSharp_27_UseAsyncMethodsForAsyncWork\MECSharp_27_UseAsyncMethodsForAsyncWork.csproj", "{C8F1C11F-017C-405C-A5B1-57DF13E98A82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{F2E9F3CE-67CD-449A-AC9F-9EB4AAC228A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{C8F1C11F-017C-405C-A5B1-57DF13E98A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8F1C11F-017C-405C-A5B1-57DF13E98A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8F1C11F-017C-405C-A5B1-57DF13E98A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E9F3CE-67CD-449A-AC9F-9EB4AAC228A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E9F3CE-67CD-449A-AC9F-9EB4AAC228A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E9F3CE-67CD-449A-AC9F-9EB4AAC228A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E9F3CE-67CD-449A-AC9F-9EB4AAC228A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
