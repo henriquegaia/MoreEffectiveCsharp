@@ -16,46 +16,43 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
             // case 1: can catch exception ------------------------------------
             // async Task<int> ------------------------------------------------
 
-            //try
-            //{
-            //    Log("enter async");
-            //    Task<int> asyncWork = HandleFileAsync();
-            //    Log("Enter something: ");
-            //    string line = Console.ReadLine();
-            //    Log("You entered (asynchronous logic): " + line);
-            //    Log("exit async");
-            //    asyncWork.Wait();
-            //    var resAsync = asyncWork.Result;
-            //    Log(resAsync.ToString());
-            //    Other();
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
+            ExceptionCaught();
 
             // case 2: can't catch or log exception ---------------------------
             // async void -----------------------------------------------------
 
-            //try
-            //{
-            //    Log("enter async");
-            //    HandleFileAsyncVoid();
-            //    Log("Enter something: ");
-            //    string line2 = Console.ReadLine();
-            //    Log("You entered (asynchronous logic): " + line2);
-            //    Log("exit async");
-            //    Other();
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //}
+            //ExceptionNotCatchedOrThrown();
 
             // case 3: can't catch exception but can log it -------------------
             // async void -----------------------------------------------------
 
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            //AppDomainThrowsException();
+        }
+
+        private static void ExceptionCaught()
+        {
+            try
+            {
+                Log("enter async");
+                Task<int> asyncWork = HandleFileAsync();
+                Log("Enter something: ");
+                string line = Console.ReadLine();
+                Log("You entered (asynchronous logic): " + line);
+                Log("exit async");
+                asyncWork.Wait();
+                var resAsync = asyncWork.Result;
+                Log(resAsync.ToString());
+                Other();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private static void ExceptionNotCatchedOrThrown()
+        {
+            try
             {
                 Log("enter async");
                 HandleFileAsyncVoid();
@@ -64,7 +61,28 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
                 Log("You entered (asynchronous logic): " + line2);
                 Log("exit async");
                 Other();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private static void AppDomainThrowsException()
+        {
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(e.ExceptionObject.ToString());
             };
+
+            Log("enter async");
+            HandleFileAsyncVoid();
+            Log("Enter something: ");
+            string line2 = Console.ReadLine();
+            Log("You entered (asynchronous logic): " + line2);
+            Log("exit async");
+            Other();
         }
 
         static async Task<int> HandleFileAsync()
