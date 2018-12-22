@@ -16,7 +16,7 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
             // case 1: can catch exception ------------------------------------
             // async Task<int> ------------------------------------------------
 
-            //ExceptionCaught();
+            ExceptionCaught();
 
             // case 2: can't catch or log exception ---------------------------
             // async void -----------------------------------------------------
@@ -26,7 +26,7 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
             // case 3: can't catch exception but can log it -------------------
             // async void -----------------------------------------------------
 
-            AppDomainThrowsException();
+            //AppDomainThrowsException();
         }
 
         private static void ExceptionCaught()
@@ -92,7 +92,7 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
             }
         }
 
-        static async Task<int> HandleFileAsync()
+        public static async Task<int> HandleFileAsync(bool throwExp = true)
         {
             int count = 0;
             using (StreamReader stream = new StreamReader(file))
@@ -103,7 +103,7 @@ namespace MECSharp_28_NeverWriteAsyncVoidMethods
                 for (int i = 0; i < n; i++)
                 {
                     int x = v.GetHashCode();
-                    if (i == n - 1)
+                    if (throwExp && i == n - 1)
                     {
                         throw new FieldAccessException("EXCEPTION");
                     }
