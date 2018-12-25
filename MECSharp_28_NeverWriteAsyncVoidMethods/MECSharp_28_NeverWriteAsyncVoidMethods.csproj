@@ -49,6 +49,7 @@
     <Compile Include="Pg146_AsyncVoidEventHandler.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pg146_1_CustomAwaitableTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
