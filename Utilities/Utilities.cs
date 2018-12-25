@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Utilities
 {
@@ -37,6 +38,28 @@ namespace Utilities
         {
             Line(line);
             Console.ForegroundColor = DefaultForeground;
+        }
+
+        public static async void FireAndForget(this Task task, Action<Exception> onErrors)
+        {
+            try
+            {
+                await task;
+            }
+            catch (Exception ex)
+            {
+                onErrors(ex);
+            }
+        }
+
+        public static async void FireAndForget(this Task task, Func<Exception, bool> onErrors)
+        {
+            try
+            {
+                await task;
+            }
+            catch (Exception ex) when (onErrors(ex)) 
+            {}
         }
     }
 
