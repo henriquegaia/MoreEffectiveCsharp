@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Utilities
@@ -30,7 +31,7 @@ namespace Utilities
 
         public static void Info(string line = "Continue ...")
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             LogAndReset(line);
         }
 
@@ -61,6 +62,12 @@ namespace Utilities
             catch (Exception ex) when (onErrors(ex)) 
             {}
         }
+
+        public static int ThreadCount() => 
+            Process.GetCurrentProcess().Threads.Count;
+
+        public static void LogThreadCount() => 
+            Info($"ThreadCount: {ThreadCount().ToString()}");
     }
 
 }

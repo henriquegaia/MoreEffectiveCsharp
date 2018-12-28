@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Utilities;
@@ -22,6 +23,7 @@ namespace MECSharp_29_AvoidComposingSyncAndAsyncMethods
 
         public void Test()
         {
+            Log.LogThreadCount();
             Reason1();
             //Reason2();
             //Reason3();
@@ -31,17 +33,52 @@ namespace MECSharp_29_AvoidComposingSyncAndAsyncMethods
 
         private async void Reason1()
         {
-            //Console.WriteLine("Reason 1: diff excep semantics");
-            //int resAsync = await ComputeAsync();
-            //Console.WriteLine($"res async: {resAsync}");
+            Console.WriteLine("Reason 1: diff excep semantics");
+            // 1
+            int resAsync = await ComputeAsync();
+            Console.WriteLine($"res async: {resAsync}");
 
-            int resSync = ComputeSync();
-            Console.WriteLine($"res Sync: {resSync}");
+            // 2
+            //int resSyncFailCatch = ComputeSyncFailsToCatchException();
+            //Console.WriteLine($"res Sync fail catch: {resSyncFailCatch}");
+
+            // 3
+            //int resSyncSuccessCatch = ComputeSyncSucceedsCatchingException();
+            //Console.WriteLine($"res Sync success catch: {resSyncSuccessCatch}");
         }
 
-        private int ComputeSync()
+        static int ComputeSyncFailsToCatchException()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var a = GetOpByIndex(0).Result;
+                var b = GetOpByIndex(1).Result;
+                var c = GetOpByIndex(2).Result;
+                return a + b + c;
+            }
+            catch (KeyNotFoundException e)
+            {
+                Log.Exception(e);
+                return 0;
+            }
+        }
+
+        static int ComputeSyncSucceedsCatchingException()
+        {
+            try
+            {
+                var a = GetOpByIndex(0).Result;
+                var b = GetOpByIndex(1).Result;
+                var c = GetOpByIndex(2).Result;
+                return a + b + c;
+            }
+            catch (AggregateException e) 
+                when (e.InnerExceptions.FirstOrDefault().GetType() 
+                    == typeof(KeyNotFoundException))
+            {
+                Log.Exception(e);
+                return 0;
+            }
         }
 
         static async Task<int> ComputeAsync()
@@ -62,7 +99,7 @@ namespace MECSharp_29_AvoidComposingSyncAndAsyncMethods
 
         private static async Task<int> GetOpByIndex(int v)
         {
-            //await Task.Delay(500);
+            await Task.Delay(500);
             var op = Operations[v];
             return op;
         }

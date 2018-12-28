@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E114022C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_29_AvoidComposingSyncAndAsyncMethods", "MECSharp_29_AvoidComposingSyncAndAsyncMethods\MECSharp_29_AvoidComposingSyncAndAsyncMethods.csproj", "{56343536-9593-4433-809E-2302149D68EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_29_AvoidComposingSyncAndAsyncMethods_GUI", "MECSharp_29_AvoidComposingSyncAndAsyncMethods_GUI\MECSharp_29_AvoidComposingSyncAndAsyncMethods_GUI.csproj", "{7F31755E-925B-4094-A965-20FFAF83F1CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{56343536-9593-4433-809E-2302149D68EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56343536-9593-4433-809E-2302149D68EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56343536-9593-4433-809E-2302149D68EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F31755E-925B-4094-A965-20FFAF83F1CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F31755E-925B-4094-A965-20FFAF83F1CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F31755E-925B-4094-A965-20FFAF83F1CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F31755E-925B-4094-A965-20FFAF83F1CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
