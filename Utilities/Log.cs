@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Utilities
 {
@@ -28,7 +26,6 @@ namespace Utilities
             LogAndReset(exception.Message);
         }
 
-
         public static void Info(string line = "Continue ...")
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -41,33 +38,8 @@ namespace Utilities
             Console.ForegroundColor = DefaultForeground;
         }
 
-        public static async void FireAndForget(this Task task, Action<Exception> onErrors)
-        {
-            try
-            {
-                await task;
-            }
-            catch (Exception ex)
-            {
-                onErrors(ex);
-            }
-        }
-
-        public static async void FireAndForget(this Task task, Func<Exception, bool> onErrors)
-        {
-            try
-            {
-                await task;
-            }
-            catch (Exception ex) when (onErrors(ex)) 
-            {}
-        }
-
-        public static int ThreadCount() => 
-            Process.GetCurrentProcess().Threads.Count;
-
-        public static void LogThreadCount() => 
-            Info($"ThreadCount: {ThreadCount().ToString()}");
+        public static void ThreadCount() => 
+            Info($"ThreadCount: {AsyncAndThreading.ThreadCount().ToString()}");
     }
 
 }

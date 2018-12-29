@@ -23,7 +23,7 @@ namespace MECSharp_29_AvoidComposingSyncAndAsyncMethods
 
         public void Test()
         {
-            Log.LogThreadCount();
+            Log.ThreadCount();
             Reason1();
             //Reason2();
             //Reason3();
