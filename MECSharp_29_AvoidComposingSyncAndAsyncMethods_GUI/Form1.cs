@@ -16,15 +16,23 @@ namespace MECSharp_29_AvoidComposingSyncAndAsyncMethods_GUI
         public Form1()
         {
             InitializeComponent();
-
-            SyncOverAsyncDeadlock();
-            label1.Text = Log.ThreadCount().ToString();
         }
 
         static void SyncOverAsyncDeadlock()
         {
             var t = AsyncWork.Simulate();
             t.Wait();
+        }
+
+        static async Task SyncOverAsyncDeadlock_Resolved()
+        {
+            await AsyncWork.Simulate_3();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await SyncOverAsyncDeadlock_Resolved();
+            label1.Text = Log.ThreadCount().ToString();
         }
     }
 }
