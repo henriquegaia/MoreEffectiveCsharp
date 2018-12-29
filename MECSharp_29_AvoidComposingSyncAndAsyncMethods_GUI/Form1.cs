@@ -18,21 +18,43 @@ namespace MECSharp_29_AvoidComposingSyncAndAsyncMethods_GUI
             InitializeComponent();
         }
 
-        static void SyncOverAsyncDeadlock()
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //SyncOverAsyncDeadlock();
+            SyncOverAsyncDeadlock_Resolved_TimeOut();
+            //await SetNumberOfThreads_NonBlocking();
+        }
+
+        // ---------------------------------------------------------------------
+
+        void SyncOverAsyncDeadlock()
         {
             var t = AsyncWork.Simulate();
             t.Wait();
         }
 
-        static async Task SyncOverAsyncDeadlock_Resolved()
+        void SyncOverAsyncDeadlock_Resolved_TimeOut()
         {
-            await AsyncWork.Simulate_3();
+            int timeout = 2;
+            label1.Text = $"unresponsive for {timeout} seconds";
+            var t = AsyncWork.Simulate();
+            t.Wait(TimeSpan.FromSeconds(timeout));
+            label1.Text = $"responsive again";
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        async Task SyncOverAsyncDeadlock_Resolved_v1()
         {
-            await SyncOverAsyncDeadlock_Resolved();
+            await AsyncWork.Simulate(3);
+        }
+
+        // ---------------------------------------------------------------------
+
+        private async Task SetNumberOfThreads_NonBlocking()
+        {
+            label1.Text = "button clicked ... wait 3 sec";
+            await SyncOverAsyncDeadlock_Resolved_v1();
             label1.Text = Log.ThreadCount().ToString();
         }
+
     }
 }
