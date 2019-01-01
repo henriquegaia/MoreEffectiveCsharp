@@ -1,0 +1,13 @@
+﻿<Window x:Class="MECSharp_31_AvoidMarshallingContextUnnecess_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MECSharp_31_AvoidMarshallingContextUnnecess_GUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="154.245" Width="665.566">
+    <Grid Margin="0,0,0,341">
+        <Label Content="sdfsf" Name="lb" HorizontalAlignment="Left" Margin="18,24,0,-74" VerticalAlignment="Top" RenderTransformOrigin="1.715,-2.602" Height="50" Width="230"/>
+
+    </Grid>
+</Window>
