@@ -44,5 +44,11 @@
     <Compile Include="MECSharp_31_AvoidMarshallingContextUnnecess_Lib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{f2e9f3ce-67cd-449a-ac9f-9eb4aac228a6}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
