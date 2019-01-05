@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallingContextUnnecess_GUI", "MECSharp_31_AvoidMarshallingContextUnnecess_GUI\MECSharp_31_AvoidMarshallingContextUnnecess_GUI.csproj", "{337E3B44-1D18-4418-B14E-E6454A3E40B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallingContextUnnecess_Lib", "MECSharp_31_AvoidMarshallingContextUnnecess_Lib\MECSharp_31_AvoidMarshallingContextUnnecess_Lib.csproj", "{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallingContextUnnecess_ASP", "MECSharp_31_AvoidMarshallingContextUnnecess_ASP\MECSharp_31_AvoidMarshallingContextUnnecess_ASP.csproj", "{48B81D51-BCD0-435E-94C0-F18C08EF506B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +110,14 @@ Global
 		{337E3B44-1D18-4418-B14E-E6454A3E40B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{337E3B44-1D18-4418-B14E-E6454A3E40B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{337E3B44-1D18-4418-B14E-E6454A3E40B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

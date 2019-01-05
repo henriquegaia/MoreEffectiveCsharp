@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70C02B68-ABE0-4CE2-83E0-3858A718ED6F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MECSharp_31_AvoidMarshallingContextUnnecess</RootNamespace>
-    <AssemblyName>MECSharp_31_AvoidMarshallingContextUnnecess</AssemblyName>
+    <ProjectGuid>{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MECSharp_31_AvoidMarshallingContextUnnecess_Lib</RootNamespace>
+    <AssemblyName>MECSharp_31_AvoidMarshallingContextUnnecess_Lib</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MECSharp_31_AvoidMarshallingContextUnnecess.cs" />
+    <Compile Include="MECSharp_31_AvoidMarshallingContextUnnecess_Lib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MECSharp_31_AvoidMarshallingContextUnnecess_Lib\MECSharp_31_AvoidMarshallingContextUnnecess_Lib.csproj">
-      <Project>{8dea14ff-61b4-44e2-a7d2-f306a4ba150b}</Project>
-      <Name>MECSharp_31_AvoidMarshallingContextUnnecess_Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

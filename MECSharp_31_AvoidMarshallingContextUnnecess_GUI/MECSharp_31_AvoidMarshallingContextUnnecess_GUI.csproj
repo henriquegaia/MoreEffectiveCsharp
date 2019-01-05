@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MECSharp_31_AvoidMarshallingContextUnnecess_GUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,8 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MECSharp_31_AvoidMarshallingContextUnnecess_GUI.xaml.cs">
+      <DependentUpon>MECSharp_31_AvoidMarshallingContextUnnecess_GUI.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -93,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MECSharp_31_AvoidMarshallingContextUnnecess_Lib\MECSharp_31_AvoidMarshallingContextUnnecess_Lib.csproj">
+      <Project>{8dea14ff-61b4-44e2-a7d2-f306a4ba150b}</Project>
+      <Name>MECSharp_31_AvoidMarshallingContextUnnecess_Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

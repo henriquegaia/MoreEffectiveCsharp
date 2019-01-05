@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Runtime.Remoting.Contexts;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Lib = MECSharp_31_AvoidMarshallingContextUnnecess_Lib.MECSharp_31_AvoidMarshallingContextUnnecess_Lib;
 
 namespace MECSharp_31_AvoidMarshallingContextUnnecess_GUI
 {
@@ -24,7 +13,12 @@ namespace MECSharp_31_AvoidMarshallingContextUnnecess_GUI
         public MainWindow()
         {
             InitializeComponent();
+
+            Lib.RunTests();
+
             lb.Content = Thread.CurrentContext;
+            var dc = Context.DefaultContext;
+            lb.Content = dc.ContextID;
         }
     }
 }
