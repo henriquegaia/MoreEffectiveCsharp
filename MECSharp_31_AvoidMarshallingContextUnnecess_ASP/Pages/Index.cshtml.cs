@@ -11,7 +11,6 @@ namespace MECSharp_31_AvoidMarshallingContextUnnecess_ASP.Pages
     {
         public void OnGet()
         {
-
         }
     }
 }

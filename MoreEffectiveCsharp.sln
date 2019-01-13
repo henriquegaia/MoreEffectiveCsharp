@@ -42,7 +42,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallingContextUnnecess_Lib", "MECSharp_31_AvoidMarshallingContextUnnecess_Lib\MECSharp_31_AvoidMarshallingContextUnnecess_Lib.csproj", "{8DEA14FF-61B4-44E2-A7D2-F306A4BA150B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_31_AvoidMarshallingContextUnnecess_ASP", "MECSharp_31_AvoidMarshallingContextUnnecess_ASP\MECSharp_31_AvoidMarshallingContextUnnecess_ASP.csproj", "{48B81D51-BCD0-435E-94C0-F18C08EF506B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MECSharp_31_AvoidMarshallingContextUnnecess_ASP", "MECSharp_31_AvoidMarshallingContextUnnecess_ASP\MECSharp_31_AvoidMarshallingContextUnnecess_ASP.csproj", "{48B81D51-BCD0-435E-94C0-F18C08EF506B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_32_ComposeAsyncWorkUsingTasklObjects", "MECSharp_32_ComposeAsyncWorkUsingTasklObjects\MECSharp_32_ComposeAsyncWorkUsingTasklObjects.csproj", "{B5F64BE3-1D8B-463A-8070-0C4AA3F63E57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +120,10 @@ Global
 		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48B81D51-BCD0-435E-94C0-F18C08EF506B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F64BE3-1D8B-463A-8070-0C4AA3F63E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F64BE3-1D8B-463A-8070-0C4AA3F63E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F64BE3-1D8B-463A-8070-0C4AA3F63E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F64BE3-1D8B-463A-8070-0C4AA3F63E57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

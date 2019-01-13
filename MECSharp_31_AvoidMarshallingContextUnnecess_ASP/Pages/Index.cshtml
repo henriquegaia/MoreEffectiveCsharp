@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<p> @ViewData["Message"] from the Hello World partial </p>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -27,7 +28,7 @@
             <div class="carousel-caption" role="option">
                 <p>
                     There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+                    <a class="btn btn-default" id="x" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
                         Learn More
                     </a>
                 </p>
