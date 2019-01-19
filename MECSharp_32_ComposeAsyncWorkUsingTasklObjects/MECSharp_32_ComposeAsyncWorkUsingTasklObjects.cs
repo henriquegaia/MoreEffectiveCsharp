@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Utilities;
 
@@ -10,35 +10,76 @@ namespace MECSharp_32_ComposeAsyncWorkUsingTasklObjects
     {
         static void Main(string[] args)
         {
-            pg_163_2();
+            Stopwatch stopWatchWorst = new Stopwatch();
+            stopWatchWorst.Start();
+            LessEfficient();
+            stopWatchWorst.Stop();
+            Console.WriteLine($"-> worst {stopWatchWorst.ElapsedMilliseconds}");
+
+            Stopwatch stopWatchBest = new Stopwatch();
+            stopWatchBest.Start();
+            MoreEfficient();
+            stopWatchBest.Stop();
+            Console.WriteLine($"-> best {stopWatchBest.ElapsedMilliseconds}");
         }
 
-        static void pg_163_2()
+        private static void MoreEfficient()
         {
-            Task<string> task = AsyncAndThreading.ReadFileAsync(false);
+            var sourceTasks = SourceTasks_pg_163_2();
+
+            foreach (var it in sourceTasks)
+            {
+                Console.WriteLine(it.Id);
+                Console.WriteLine(it.Status);
+                Console.WriteLine("---");
+            }
+
+            Console.WriteLine("===");
+            var outputTasks = sourceTasks.OrderBySourceCompletion();
+
+            foreach (var ot in outputTasks)
+            {
+                Console.WriteLine(ot.Id);
+                Console.WriteLine(ot.Status);
+                Console.WriteLine("---");
+            }
+        }
+
+        private static void LessEfficient()
+        {
+            var sourceTasks = SourceTasks_pg_163_2();
+
+            foreach (var it in sourceTasks)
+            {
+                Console.WriteLine(it.Id);
+                Console.WriteLine(it.Status);
+                Console.WriteLine("---");
+            }
+
+            Console.WriteLine("===");
+            var outputTasks = sourceTasks.OrderBySourceOrder();
+
+            //foreach (var ot in outputTasks)
+            //{
+            //    Console.WriteLine(ot.Id);
+            //    Console.WriteLine(ot.Status);
+            //    Console.WriteLine("---");
+            //}
+        }
+
+        static IEnumerable<Task<string>> SourceTasks_pg_163_2()
+        {
+            Task<string> task1 = AsyncAndThreading.ReadFileAsync(false);
+            Task<string> task2 = AsyncAndThreading.ReadFileAsync(false, @"C:\Users\Henrique-private\Desktop\demo2.txt");
+            Task<string> task3 = AsyncAndThreading.ReadFileAsync(false, @"C:\Users\Henrique-private\Desktop\demo3.txt");
             List<Task<string>> tasksList = new List<Task<string>>();
-            tasksList.Add(task);
-            tasksList.Add(task);
-            tasksList.Add(task);
+            tasksList.Add(task1);
+            tasksList.Add(task2);
+            tasksList.Add(task3);
             var tasksArray = tasksList.ToArray();
+            return tasksArray;
         }
 
     }
 
-    public static class MyClass
-    {
-        //public static Task<string>[] OrderByCompletion(this IEnumerable<Task<string>> tasks)
-        //{
-        //    var source = tasks.ToList();
-        //    var completionSources = new TaskCompletionSource<string>[source.Count];
-        //    var outputTasks = new Task<string>[completionSources.Length];
-
-        //    for (int i = 0; i < completionSources.Length; i++)
-        //    {
-        //        completionSources[i] = new TaskCompletionSource<string>();
-        //        outputTasks[i] = completionSources[i].Task;
-        //    }
-        //}
-
-    }
 }

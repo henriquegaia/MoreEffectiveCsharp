@@ -41,7 +41,7 @@ namespace Utilities
             Process.GetCurrentProcess().Threads.Count;
 
         public static async Task<string> ReadFileAsync(
-            bool continueOnCapturedContext, string filename = @"C:\Users\Henrique-private\Desktop\test2.txt")
+            bool continueOnCapturedContext, string filename = @"C:\Users\Henrique-private\Desktop\demo1.txt")
         {
             byte[] result;
 
