@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
 {
@@ -8,34 +11,56 @@ namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
     {
         static DateTime lastReading;
         const int ReadingFrequencySeconds = 2;
-        static List<WeatherData> recentObservations;
+        static List<Task<string>> recentObservations;
+        static long totalTimeUsingTaskList = 0;
+        static long totalTimeUsingTaskValueList = 0;
+        static int iterations = 5;
 
         static async Task Main(string[] args)
         {
             lastReading = DateTime.Now;
-            recentObservations = WeatherData.GenerateRandomData();
+            recentObservations = WeatherData.GenerateData();
 
-            while (true)
+            for (int i = 0; i < iterations; i++)
             {
-                if (DateTime.Now - lastReading > TimeSpan.FromSeconds(ReadingFrequencySeconds))
-                {
-                    await pg174_UsingTaskList();
-                }
+                var elapsed = await pg174_UsingTaskList();
             }
+            Console.WriteLine($"totalTimeUsingTaskList: {totalTimeUsingTaskList}");
+
+            //while (true)
+            //{
+            //    if (DateTime.Now - lastReading > TimeSpan.FromSeconds(ReadingFrequencySeconds))
+            //    {
+            //        var elapsed = await pg174_UsingTaskList();
+            //    }
+            //    //Console.WriteLine($"totalTimeUsingTaskList: {totalTimeUsingTaskList}");
+            //}
         }
 
-        private static async Task pg174_UsingTaskList()
+        private static void pg175_UsingTaskValueList()
+        {
+
+        }
+
+        private static async Task<long> pg174_UsingTaskList()
         {
             WeatherData.PrintData(recentObservations);
-            recentObservations = await RetrieveHistoricalData_AsyncMethod();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            recentObservations = RetrieveHistoricalData_AsyncMethod();
+            stopwatch.Stop();
             lastReading = DateTime.Now;
+            long timeElapsed = stopwatch.ElapsedTicks;
+            totalTimeUsingTaskList += timeElapsed;
+            Console.WriteLine($"-> pg174_UsingTaskList took {timeElapsed} ticks");
+            return timeElapsed;
         }
 
-        static async Task<List<WeatherData>> RetrieveHistoricalData_AsyncMethod()
+        static List<Task<string>> RetrieveHistoricalData_AsyncMethod()
         {
             if (DateTime.Now - lastReading > TimeSpan.FromSeconds(ReadingFrequencySeconds))
             {
-                recentObservations = await RetrieveObservationData(); ;
+                recentObservations = WeatherData.GenerateData(); ;
             }
 
             return recentObservations;
@@ -53,10 +78,11 @@ namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
         //    return new ValueTask<IEnumerable<WeatherData>>(recentObservations);
         //}
 
-        static async Task<List<WeatherData>> RetrieveObservationData()
-        {
-            return await Task.Run(() => WeatherData.GenerateRandomData());
-        }
+        // garbage?
+        //static async List<Task<WeatherData>> RetrieveObservationData()
+        //{
+        //    return await Task.Run(() => WeatherData.GenerateData());
+        //}
 
     }
 
@@ -73,21 +99,23 @@ namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
 
         public override string ToString() => $"{DateTime.Now} - Temperature: {Temperature.ToString()}";
 
-        public static List<WeatherData> GenerateRandomData()
+        public static List<Task<string>> GenerateData()
         {
-            var data = new List<WeatherData>();
-            for (int i = 0; i < 3; i++)
-            {
-                data.Add(new WeatherData());
-            }
-            return data;
+            Task<string> task1 = AsyncAndThreading.ReadFileAsync(false);
+            Task<string> task2 = AsyncAndThreading.ReadFileAsync(false, @"C:\Users\Henrique-private\Desktop\demo2.txt");
+            Task<string> task3 = AsyncAndThreading.ReadFileAsync(false, @"C:\Users\Henrique-private\Desktop\demo3.txt");
+            List<Task<string>> tasksList = new List<Task<string>>();
+            tasksList.Add(task1);
+            tasksList.Add(task2);
+            tasksList.Add(task3);
+            return tasksList;
         }
 
-        public static void PrintData(List<WeatherData> data)
+        public static void PrintData(IEnumerable<Task<string>> data)
         {
-            foreach (var item in data)
+            foreach (var task in data)
             {
-                Console.WriteLine(item.ToString());
+                Console.WriteLine($"Task id {task.Id} IsCompletedSuccessfully: {task.IsCompletedSuccessfully}");
             }
             Console.WriteLine("-------------------------------");
         }
