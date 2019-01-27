@@ -18,6 +18,8 @@ namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
 
         static async Task Main(string[] args)
         {
+            // pg174_UsingTaskList
+
             lastReading = DateTime.Now;
             recentObservations = WeatherData.GenerateData();
 
@@ -27,19 +29,20 @@ namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
             }
             Console.WriteLine($"totalTimeUsingTaskList: {totalTimeUsingTaskList}");
 
-            //while (true)
-            //{
-            //    if (DateTime.Now - lastReading > TimeSpan.FromSeconds(ReadingFrequencySeconds))
-            //    {
-            //        var elapsed = await pg174_UsingTaskList();
-            //    }
-            //    //Console.WriteLine($"totalTimeUsingTaskList: {totalTimeUsingTaskList}");
-            //}
+            // pg175_UsingTaskValueList
+
+            pg175_UsingTaskValueList();
+            Console.WriteLine($"totalTimeUsingTaskValueList : {totalTimeUsingTaskValueList}");
         }
 
         private static void pg175_UsingTaskValueList()
         {
+            Console.WriteLine("TODO");
+        }
 
+        static List<ValueTask<string>> RetrieveHistoricalData_ValueTask()
+        {
+            return new List<ValueTask<string>>();
         }
 
         private static async Task<long> pg174_UsingTaskList()
@@ -66,17 +69,6 @@ namespace MECSharp_34_CacheGeneralizedAsyncReturnTypes
             return recentObservations;
         }
 
-        //static ValueTask<IEnumerable<WeatherData>> RetHistData_ValueTask()
-        //{
-        //    if (DateTime.Now - lastReading > TimeSpan.FromMinutes(5))
-        //    {
-        //        return new ValueTask<IEnumerable<WeatherData>>(recentObservations);
-        //    }
-
-        //    //var obs = await RetObsData();
-        //    //recentObservations.Add(obs);
-        //    return new ValueTask<IEnumerable<WeatherData>>(recentObservations);
-        //}
 
         // garbage?
         //static async List<Task<WeatherData>> RetrieveObservationData()
