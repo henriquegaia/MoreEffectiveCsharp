@@ -46,7 +46,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MECSharp_31_AvoidMarshallin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MECSharp_32_ComposeAsyncWorkUsingTasklObjects", "MECSharp_32_ComposeAsyncWorkUsingTasklObjects\MECSharp_32_ComposeAsyncWorkUsingTasklObjects.csproj", "{B5F64BE3-1D8B-463A-8070-0C4AA3F63E57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_34_CacheGeneralizedAsyncReturnTypes", "MECSharp_34_CacheGeneralizedAsyncReturnTypes\MECSharp_34_CacheGeneralizedAsyncReturnTypes.csproj", "{8AC2C598-FC01-4F58-AE7A-BD171AFD9AE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MECSharp_34_CacheGeneralizedAsyncReturnTypes", "MECSharp_34_CacheGeneralizedAsyncReturnTypes\MECSharp_34_CacheGeneralizedAsyncReturnTypes.csproj", "{8AC2C598-FC01-4F58-AE7A-BD171AFD9AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECSharp_35_HowPLINQImplementsParallelAlgorithms", "MECSharp_35_HowPLINQImplementsParallelAlgorithms\MECSharp_35_HowPLINQImplementsParallelAlgorithms.csproj", "{CBEC96DB-9317-4BE7-AA19-F414B6384627}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +132,10 @@ Global
 		{8AC2C598-FC01-4F58-AE7A-BD171AFD9AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC2C598-FC01-4F58-AE7A-BD171AFD9AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC2C598-FC01-4F58-AE7A-BD171AFD9AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBEC96DB-9317-4BE7-AA19-F414B6384627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBEC96DB-9317-4BE7-AA19-F414B6384627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBEC96DB-9317-4BE7-AA19-F414B6384627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBEC96DB-9317-4BE7-AA19-F414B6384627}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
