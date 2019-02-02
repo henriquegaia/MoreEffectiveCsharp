@@ -15,9 +15,9 @@
         private static double InterimCalculation(int i) =>
             i ^ 1;
 
-        public static double Factorial(double d)
+        public static int Factorial(int d)
         {
-            double res = d;
+            int res = d;
             while (d != 1)
             {
                 --d;
