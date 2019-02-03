@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Utilities;
+using System.Diagnostics;
 
 namespace MECSharp_35_HowPLINQImplementsParallelAlgorithms
 {
@@ -9,31 +10,33 @@ namespace MECSharp_35_HowPLINQImplementsParallelAlgorithms
     {
         static void Main(string[] args)
         {
-            var data = SampleData.IntCollection(amount: 5, max: 5);
-            Display(data);
+            Stopwatch stopwatch = new Stopwatch();
+            List<int> data = SampleData.IntCollection(amount: 10_000, max: 50).ToList();
+            Display(data, 0, "data");
 
-            Console.WriteLine("----");
+            stopwatch.Start();
+            var pg178_seq = pg178_Sequential(data);
+            stopwatch.Stop();
+            Display(pg178_seq, stopwatch.ElapsedMilliseconds, "seq");
 
-            BenchmarkingExtensions.ExecutionTimeMs("seq", 1_000, pg178_Sequential(data));
-
-            //var pg178_seq = pg178_Sequential(data);
-            //Display(pg178_seq);
-
-            //Console.WriteLine("----");
-
-            //var pg178_par = pg178_Parallel(data);
-            //Display(pg178_par);
+            stopwatch.Start();
+            var pg178_par = pg178_Parallel(data);
+            stopwatch.Stop();
+            Display(pg178_par, stopwatch.ElapsedMilliseconds, "plinq");
         }
 
-        private static void Display(IEnumerable<int> data)
+        private static void Display(IEnumerable<int> data, long timeMs, string what)
         {
-            foreach (var item in data)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine($"{what}");
+            //foreach (var item in data)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            Console.WriteLine($"ms: {timeMs}");
+            Console.WriteLine("----");
         }
 
-        static IEnumerable<int> pg178_Sequential(IEnumerable<int> data)
+        static List<int> pg178_Sequential(List<int> data)
         {
             var nums = data
                 //.Where(n => n < 5)
@@ -51,6 +54,7 @@ namespace MECSharp_35_HowPLINQImplementsParallelAlgorithms
                 .ToList();
             return nums;
         }
+
         private static Func<int, int> Predicate() => (n) => LongRun.FactorialRecursive(n);
     }
 }
