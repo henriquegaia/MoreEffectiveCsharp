@@ -4,7 +4,25 @@
     {
         static void Main(string[] args)
         {
-            SeqVsPLinq.Test();
+            //SeqVsPLinq.Test();
+            LinqToObjects.Test();
+            LinqToSQL.Test();
+        }
+    }
+
+    public static class LinqToObjects
+    {
+        public static void Test()
+        {
+            System.Console.WriteLine("todo");
+        }
+    }
+
+    public static class LinqToSQL
+    {
+        public static void Test()
+        {
+            System.Console.WriteLine("todo");
         }
     }
 }
