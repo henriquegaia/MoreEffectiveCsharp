@@ -11,9 +11,18 @@ namespace MECSharp_35_HowPLINQImplementsParallelAlgorithms
         {
             var data = SampleData.IntCollection(amount: 5, max: 5);
             Display(data);
+
             Console.WriteLine("----");
-            var pg178_seq = pg178_Sequential(data);
-            Display(pg178_seq);
+
+            BenchmarkingExtensions.ExecutionTimeMs("seq", 1_000, pg178_Sequential(data));
+
+            //var pg178_seq = pg178_Sequential(data);
+            //Display(pg178_seq);
+
+            //Console.WriteLine("----");
+
+            //var pg178_par = pg178_Parallel(data);
+            //Display(pg178_par);
         }
 
         private static void Display(IEnumerable<int> data)
@@ -33,6 +42,15 @@ namespace MECSharp_35_HowPLINQImplementsParallelAlgorithms
             return nums;
         }
 
+        static IEnumerable<int> pg178_Parallel(IEnumerable<int> data)
+        {
+            var nums = data
+                .AsParallel()
+                //.Where(n => n < 5)
+                .Select(Predicate())
+                .ToList();
+            return nums;
+        }
         private static Func<int, int> Predicate() => (n) => LongRun.FactorialRecursive(n);
     }
 }
