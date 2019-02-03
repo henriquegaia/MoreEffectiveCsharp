@@ -12,6 +12,14 @@ namespace Utilities
         {
             for (int i = 0; i < amount; i++)
             {
+                yield return i;
+            }
+        }
+
+        public static IEnumerable<int> IntCollectionRandom(int amount = 100_00, int max = 200)
+        {
+            for (int i = 0; i < amount; i++)
+            {
                 yield return random.Next(1, max);
             }
         }

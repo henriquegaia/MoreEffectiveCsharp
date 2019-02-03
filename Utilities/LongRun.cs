@@ -25,6 +25,13 @@
             }
             return res;
         }
+
+        public static int FactorialRecursive(int d)
+        {
+            return d <= 1
+                ? 1
+                : d * FactorialRecursive(d - 1);
+        }
     }
 
 
